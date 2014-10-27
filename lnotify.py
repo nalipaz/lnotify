@@ -53,7 +53,6 @@ class config(object):
             "notify_away": "off",
             "notify_current_channel": "on",
             "icon": "weechat",
-            "watch_words": "",
             "nick_blacklist": "--,-->",
             "irssi_notifications": "off",
             "irssi_api_token": "",
@@ -107,17 +106,10 @@ def handle_msg(data, pbuffer, date, tags, displayed, highlight, prefix, message)
 
     buffer_name = weechat.buffer_get_string(pbuffer, "short_name")
     if buffer_type == "private" and query:
-        notify_user(buffer_name, message)
+        notify_user("WeeChat: Private Message(k) from {} ({})".format(prefix, buffer_name), message, prefix, buffer_name)
 
     elif buffer_type == "channel" and highlight:
         notify_user("WeeChat: Message(h) from {} ({})".format(prefix, buffer_name), message, prefix, buffer_name)
-
-    elif buffer_type == "channel":
-        watch_words = cfg["watch_words"].split(",")
-        for one_word in watch_words:
-            if one_word in message:
-                notify_user("WeeChat: Message(k) from {} ({})".format(prefix, buffer_name), message, prefix, buffer_name)
-                break
 
     return weechat.WEECHAT_RC_OK
 
@@ -169,3 +161,4 @@ if __name__ == "__main__":
 
     cfg = config()
     print_hook = weechat.hook_print("", "", "", 1, "handle_msg", "")
+
