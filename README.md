@@ -4,7 +4,7 @@ lnotify.py
 Personal modifications to the WeeChat lnotify.py script.
 
 Supports:
- * Highlighting messages through the use of watch words, private messages, nick mentions.
+ * Highlighting messages through the use of watch words (weechat.look.highlight), private messages, nick mentions.
  * Sound notifications through the use of aplay (by default) and a custom file.
  * Blacklisting nicks that shouldn't trigger a notification.
  * Support for irssi notifications to integrate with android devices.
