@@ -14,4 +14,6 @@ Supports:
 This runs well for me with WeeChat running remotely on my server, but forks and pull requests are gladly accepted.
 
 There is a client that needs to run locally, you can start it running by executing:
-    (/path/to/lnotify-client.py hostname &) &> /dev/null
+```
+(/path/to/lnotify-client.py hostname &) &> /dev/null
+```
